@@ -1,8 +1,10 @@
+import styles from './footer.module.css'
+
 export function Footer() {
     return (
-      <div>
-        <img src="./src/img/dogfooter.svg" alt="Logo de cachorro" />
-        <p>Alguns direitos Reservados - 2024</p>
+      <div className={styles.footerContainer}>
+        <p>Alguns direitos Reservados - 2025</p>
+        <img src="./src/img/dogfooter.png" alt="Logo de cachorro" />
       </div>
     );
   }
