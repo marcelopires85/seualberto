@@ -40,16 +40,17 @@
   line-height: 1.04;
 }
 
-.sectionTitle img {
+.heroCollarImage {
+  display: block;
   width: 42px;
   height: 42px;
-  flex: 0 0 auto;
+  margin: 0 auto 16px;
   object-fit: contain;
 }
 
 .heroDescription {
   max-width: 600px;
-  margin: 24px auto 28px;
+  margin: 24px auto 16px;
   color: #67564c;
   font-size: 1.12rem;
   line-height: 1.7;
@@ -289,6 +290,123 @@
   line-height: 1.5;
 }
 
+.errorMessage,
+.emptyState {
+  padding: 14px 16px;
+  border: 1px solid #edc7bd;
+  border-radius: 10px;
+  background: #fff4f1;
+  color: #842f20;
+  line-height: 1.5;
+}
+
+.emptyState {
+  border-color: #eee4dc;
+  background: #fff;
+  color: #74645b;
+  text-align: center;
+}
+
+.socialActions {
+  display: flex;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.socialActions button,
+.commentForm button {
+  min-height: 38px;
+  padding: 8px 12px;
+  border: 1px solid #d9c8ba;
+  border-radius: 999px;
+  background: #fffaf5;
+  color: #754029;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.socialActions button[aria-pressed="true"] {
+  border-color: #a45132;
+  background: #a45132;
+  color: #fff;
+}
+
+.socialActions button:disabled,
+.commentForm button:disabled,
+.adoptButton:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.comments {
+  margin: 18px 0;
+  padding-top: 16px;
+  border-top: 1px solid #eee4dc;
+}
+
+.comments h4 {
+  margin: 0 0 12px;
+  color: #39281f;
+  font-size: 0.98rem;
+}
+
+.comments ul {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 14px;
+  padding: 0;
+  list-style: none;
+}
+
+.comments li {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #fffaf5;
+  color: #65574e;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.comments li strong {
+  color: #754029;
+}
+
+.comments li p {
+  margin: 4px 0 0;
+}
+
+.commentForm {
+  display: grid;
+  gap: 10px;
+}
+
+.commentForm label {
+  display: grid;
+  gap: 5px;
+  color: #58483f;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.commentForm input,
+.commentForm textarea {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid #dccfc4;
+  border-radius: 8px;
+  color: #39281f;
+  font: inherit;
+  font-size: 0.9rem;
+  resize: vertical;
+}
+
+.commentForm button {
+  justify-self: start;
+}
+
 @media (max-width: 560px) {
   .hero {
     padding: 68px 20px;
@@ -309,6 +427,10 @@
 
   .adoptionDialog {
     padding: 22px 18px;
+  }
+
+  .socialActions {
+    flex-wrap: wrap;
   }
 }
 

@@ -1,11 +1,10 @@
-import { Section } from '../components/section'
+import { AnimalSection } from '../components/AnimalSection'
 import { Footer } from '../components/footer'
 
 export function Home() {
   return (
     <>
-      <Section />
-      {/* Outro conteúdo da home */}
+      <AnimalSection />
       <Footer />
     </>
   )

@@ -107,6 +107,239 @@
   line-height: 1.5;
 }
 
+.errorMessage {
+  margin: 0;
+  padding: 12px;
+  border: 1px solid #edc7bd;
+  border-radius: 9px;
+  background: #fff4f1;
+  color: #842f20;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.loginForm button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.adminPage {
+  min-height: 70vh;
+  padding: 54px max(24px, calc((100% - 1120px) / 2)) 72px;
+  background: #fffaf5;
+}
+
+.adminHeader,
+.adminSectionHeading,
+.adoptionRecord {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.adminHeader {
+  margin-bottom: 28px;
+}
+
+.adminHeader h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  letter-spacing: -0.04em;
+}
+
+.adminHeader p:not(.eyebrow) {
+  margin: 8px 0 0;
+  color: #74645b;
+  line-height: 1.5;
+}
+
+.adminSection {
+  margin-top: 28px;
+  padding: 24px;
+  border: 1px solid #eee4dc;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.adminSection h2 {
+  margin: 0;
+  font-size: 1.45rem;
+}
+
+.adminSectionHeading {
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.adminPrimaryButton,
+.secondaryButton {
+  min-height: 40px;
+  padding: 9px 15px;
+  border: 0;
+  border-radius: 999px;
+  background: #a45132;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+.secondaryButton {
+  border: 1px solid #d9c8ba;
+  background: #fffaf5;
+  color: #754029;
+}
+
+.adminPrimaryButton:disabled,
+.secondaryButton:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.animalEditor {
+  margin-bottom: 22px;
+  padding: 20px;
+  border: 1px solid #eee4dc;
+  border-radius: 12px;
+  background: #fffaf5;
+}
+
+.animalEditor h3 {
+  margin: 0 0 16px;
+}
+
+.adminFormGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.adminFormGrid label {
+  display: grid;
+  gap: 6px;
+  color: #58483f;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.adminFormGrid input,
+.adminFormGrid textarea {
+  width: 100%;
+  min-height: 42px;
+  padding: 9px 11px;
+  border: 1px solid #dccfc4;
+  border-radius: 8px;
+  color: #39281f;
+  font: inherit;
+  resize: vertical;
+}
+
+.adminButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.adminAnimalList,
+.adoptionList {
+  display: grid;
+  gap: 14px;
+}
+
+.adminAnimalCard {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px;
+  padding: 14px;
+  border: 1px solid #eee4dc;
+  border-radius: 12px;
+}
+
+.adminAnimalCard > img {
+  width: 120px;
+  height: 120px;
+  border-radius: 9px;
+  background: #f5eee7;
+  object-fit: cover;
+}
+
+.adminAnimalContent {
+  min-width: 0;
+}
+
+.adminAnimalContent h3,
+.adoptionRecord h3 {
+  margin: 0;
+  color: #39281f;
+  font-size: 1.08rem;
+}
+
+.adminAnimalContent > p,
+.adoptionRecord p {
+  margin: 7px 0;
+  color: #74645b;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.adminAnimalContent .adminButtons {
+  margin: 10px 0;
+}
+
+.moderationList {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.moderationList li {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #fffaf5;
+  color: #65574e;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.moderationList button {
+  flex: 0 0 auto;
+  border: 0;
+  background: transparent;
+  color: #842f20;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+  text-decoration: underline;
+}
+
+.adoptionRecord {
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #eee4dc;
+  border-radius: 10px;
+}
+
+.adoptionRecord small {
+  color: #806f65;
+}
+
+.adoptionRecord a {
+  color: #754029;
+}
+
+.emptyState {
+  color: #74645b;
+}
+
 @media (max-width: 480px) {
   .loginPage {
     padding: 40px 16px;
@@ -114,5 +347,41 @@
 
   .loginCard {
     padding: 28px 22px;
+  }
+
+  .adminPage {
+    padding: 36px 16px 52px;
+  }
+
+  .adminHeader,
+  .adoptionRecord {
+    flex-direction: column;
+  }
+
+  .adminSection {
+    padding: 18px 14px;
+  }
+
+  .adminFormGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .adminAnimalCard {
+    grid-template-columns: 80px 1fr;
+    gap: 12px;
+  }
+
+  .adminAnimalCard > img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .adminSectionHeading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .moderationList li {
+    flex-direction: column;
   }
 }
