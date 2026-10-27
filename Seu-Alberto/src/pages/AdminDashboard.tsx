@@ -173,7 +173,7 @@ export function AdminDashboard({ onLogout }: { onLogout: () => void }) {
                     <input maxLength={200} name="imageAlt" required value={editingAnimal.imageAlt} onChange={(event) => setEditingAnimal({ ...editingAnimal, imageAlt: event.target.value })} />
                   </label>
                   <label>
-                    Foto (JPG, PNG ou WebP; até 5 MB){editingAnimal.image ? ' — opcional para manter a foto atual' : ''}
+                    Foto (JPG, PNG ou WebP; até 4 MB){editingAnimal.image ? ' — opcional para manter a foto atual' : ''}
                     <input accept="image/jpeg,image/png,image/webp" name="imageFile" required={!editingAnimal.image} type="file" />
                   </label>
                 </div>

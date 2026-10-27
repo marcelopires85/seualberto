@@ -41,16 +41,17 @@ async function request<T>(
   action: string,
   options: RequestInit = {},
 ): Promise<ApiResponse<T>> {
-  const response = await fetch(`/api/index.php?action=${encodeURIComponent(action)}`, {
+  const response = await fetch(`/api?action=${encodeURIComponent(action)}`, {
     credentials: 'same-origin',
     ...options,
+    headers: { 'X-Requested-With': 'fetch', ...options.headers },
   })
   let result: ApiResponse<T>
   try {
     result = (await response.json()) as ApiResponse<T>
   } catch {
     throw new Error(
-      'A API retornou uma resposta inválida. Verifique se o servidor PHP está em execução.',
+      'A API retornou uma resposta inválida. Verifique se o servidor da API (vercel dev) está em execução.',
     )
   }
   if (!response.ok) {
@@ -67,17 +68,11 @@ export async function loadAdminData() {
   return (await request<{ authenticated: boolean }>('admin-state')).data
 }
 
-async function getCsrfToken() {
-  return (await request<{ token: string }>('csrf')).data.token
-}
-
 export async function loginAdmin(email: string, password: string) {
-  const csrfToken = await getCsrfToken()
   return request<{ authenticated: boolean }>('login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'X-CSRF-Token': csrfToken,
     },
     body: JSON.stringify({ email, password }),
   })
@@ -86,7 +81,6 @@ export async function loginAdmin(email: string, password: string) {
 export async function logoutAdmin() {
   return request<{ authenticated: boolean }>('logout', {
     method: 'POST',
-    headers: { 'X-CSRF-Token': await getCsrfToken() },
   })
 }
 
@@ -102,7 +96,6 @@ export async function saveAnimal(
   form.set('imageAlt', animal.imageAlt)
   form.set('image', animal.image)
   if (animal.imageFile) form.set('imageFile', animal.imageFile)
-  form.set('csrfToken', await getCsrfToken())
 
   return request<Animal>('save-animal', { method: 'POST', body: form })
 }
@@ -115,7 +108,6 @@ export async function adminAction(
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'X-CSRF-Token': await getCsrfToken(),
     },
     body: JSON.stringify(values),
   })
@@ -133,7 +125,6 @@ export async function submitInteraction(
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'X-CSRF-Token': await getCsrfToken(),
     },
     body: JSON.stringify(values),
   })
@@ -148,12 +139,10 @@ export async function submitAdoption(values: {
   email: string
   phone: string
 }) {
-  const csrfToken = await getCsrfToken()
   const result = await request<{ id: string }>('adoption', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'X-CSRF-Token': csrfToken,
     },
     body: JSON.stringify(values),
   })
